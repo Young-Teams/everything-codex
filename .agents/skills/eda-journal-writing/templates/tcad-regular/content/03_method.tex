@@ -1,0 +1,127 @@
+\section{The Proposed Method: \method{}}
+\label{sec:method}
+
+% Recommended structure (adapt to fit your contribution):
+%   III.A  Overview (with Figure 1)
+%   III.B  Formal problem statement / preliminaries
+%   III.C  Core algorithm or framework with pseudocode
+%   III.D  (Optional) Complexity / theoretical analysis
+%   III.E  Implementation details (parameters, defaults)
+%
+% Re-section as appropriate. Not every paper needs all of these
+% subsections; not every paper has a multi-stage pipeline.
+
+\subsection{Overview}
+\label{sec:method:overview}
+
+Figure~\ref{fig:overview} shows the high-level structure of \method{}.
+\textbf{[REPLACE with a 2--3 sentence summary of the framework and where
+the novelty lies. Adapt the figure below to match.]}
+
+\begin{figure}[!t]
+    \centering
+    % Placeholder TikZ overview diagram.
+    % Replace with your real figure (TikZ preferred over raster).
+    \begin{tikzpicture}[
+        node distance=0.6cm,
+        block/.style={draw, rectangle, rounded corners=2pt,
+                      minimum width=2.2cm, minimum height=0.7cm,
+                      align=center, font=\small},
+        arrow/.style={-Stealth, thick}
+    ]
+        \node[block, fill=blue!10]   (in)   {Input\\(\eg{} RTL or netlist)};
+        \node[block, right=of in, fill=green!10]  (s1) {Stage 1};
+        \node[block, right=of s1, fill=orange!10] (s2) {Stage 2\\(novel)};
+        \node[block, right=of s2, fill=red!10]    (s3) {Stage 3};
+        \node[block, right=of s3]                  (out){Output\\(\eg{} placed design)};
+        \draw[arrow] (in)--(s1);
+        \draw[arrow] (s1)--(s2);
+        \draw[arrow] (s2)--(s3);
+        \draw[arrow] (s3)--(out);
+    \end{tikzpicture}
+    \caption{Overview of \method{}. Stages~1 and~3 follow standard EDA
+    practice; Stage~2 (highlighted) is the novel component proposed in
+    this paper, described in Section~\ref{sec:method:core}.}
+    \label{fig:overview}
+\end{figure}
+
+\subsection{Preliminaries and Notation}
+\label{sec:method:prelim}
+
+\textbf{[REPLACE]} We adopt the following notation throughout the paper.
+Let \(D\) denote a [design / netlist / placement instance] with [N] cells
+and [M] nets. The objective is to minimize
+\(\Phi(D) = \alpha \cdot \mathrm{area}(D) + \beta \cdot \mathrm{delay}(D)
++ \gamma \cdot \mathrm{power}(D)\), subject to [constraints]. The
+hyperparameters \(\alpha, \beta, \gamma\) are set in
+Section~\ref{sec:method:impl}.
+
+\subsection{Core Algorithm}
+\label{sec:method:core}
+
+The core of \method{} is summarized in Algorithm~\ref{alg:method}.
+
+\begin{algorithm}[!t]
+\caption{\method{}: high-level procedure.}
+\label{alg:method}
+\begin{algorithmic}[1]
+\REQUIRE Design \(D\), parameters \(\theta = (\alpha,\beta,\gamma)\)
+\ENSURE Optimized design \(D^*\)
+\STATE \(D_0 \leftarrow \text{Stage1}(D)\)
+\STATE \(k \leftarrow 0\); \(\Phi_{\text{prev}} \leftarrow \infty\)
+\WHILE{not converged}
+    \STATE \(D_{k+1} \leftarrow \text{Stage2}(D_k, \theta)\)
+        \COMMENT{novel step (Sec.~\ref{sec:method:core})}
+    \STATE \(\Phi_k \leftarrow \Phi(D_{k+1})\)
+    \IF{\(|\Phi_{\text{prev}} - \Phi_k| < \varepsilon\)}
+        \STATE \textbf{break}
+    \ENDIF
+    \STATE \(\Phi_{\text{prev}} \leftarrow \Phi_k\); \(k \leftarrow k+1\)
+\ENDWHILE
+\STATE \(D^* \leftarrow \text{Stage3}(D_{k+1})\)
+\RETURN \(D^*\)
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Stage 1 — [REPLACE name].} [Two-three sentences explaining the
+stage. Cite related work used at this stage.]
+
+\textbf{Stage 2 — [REPLACE name, the novel part].} The key insight is
+that [the insight]. We formalize this as follows:
+
+\begin{equation}
+\label{eq:novel}
+f(D) \;=\; \sum_{e \in E} w(e) \cdot \phi\!\left(\, x(e) \,\right)
+       \;+\; \lambda \, R(D),
+\end{equation}
+
+\noindent where \(w(\cdot)\) is the [weight function], \(\phi(\cdot)\) is
+[smoothing function], and \(R(\cdot)\) is the [regularization term]
+weighted by \(\lambda\). The function \(f(D)\) is solved by [optimization
+method, \eg{} L-BFGS / coordinate descent / dynamic programming], yielding
+[output property].
+
+\textbf{Stage 3 — [REPLACE name].} [Two-three sentences.]
+
+\subsection{Complexity Analysis}
+\label{sec:method:complexity}
+
+\textbf{[REPLACE]} The dominant cost of Algorithm~\ref{alg:method} is
+Stage~2, which performs \(O(\log(1/\varepsilon))\) iterations of
+\(O(n \log n)\) work each, where \(n\) is the number of cells in the
+design and \(\varepsilon\) is the convergence tolerance. Total time
+complexity is therefore \(O(n \log n \cdot \log(1/\varepsilon))\).
+Memory usage is \(O(n + m)\) where \(m\) is the number of nets.
+We empirically validate this scaling in
+Section~\ref{sec:experiments:scaling}.
+
+\subsection{Implementation Details}
+\label{sec:method:impl}
+
+\textbf{[REPLACE]} \method{} is implemented in approximately [N] lines of
+[Python / C++] on top of [base tool, \eg{} OpenROAD]. The default
+hyperparameters are \(\alpha = 1.0\), \(\beta = 0.5\), \(\gamma = 0.1\),
+and \(\varepsilon = 10^{-3}\); these were tuned on the validation subset
+described in Section~\ref{sec:experiments:setup} and held fixed across
+all reported experiments. The convergence tolerance \(\varepsilon\)
+typically triggers in 8--12 outer iterations on designs we tested.

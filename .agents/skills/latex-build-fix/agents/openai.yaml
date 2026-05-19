@@ -1,0 +1,4 @@
+interface:
+  display_name: "LaTeX Build Fix"
+  short_description: "Compile and repair LaTeX projects"
+  default_prompt: "Use $latex-build-fix to compile main.tex and fix LaTeX build errors."

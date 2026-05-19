@@ -1,0 +1,179 @@
+%% ============================================================
+%% IEEE TCAD Regular Paper Template
+%% --------------------------------------------------------------
+%% This template targets IEEE Transactions on Computer-Aided
+%% Design of Integrated Circuits and Systems (TCAD).
+%%
+%% Before compiling:
+%%   1. Place IEEEtran.cls and IEEEtran.bst in this directory
+%%      (download from https://www.ctan.org/pkg/ieeetran
+%%       or copy from your existing IEEE template).
+%%   2. Run: latexmk -pdf main.tex   OR   make
+%%
+%% Compile order if not using latexmk:
+%%   pdflatex main.tex
+%%   bibtex   main
+%%   pdflatex main.tex
+%%   pdflatex main.tex
+%% ============================================================
+
+\documentclass[journal,letterpaper]{IEEEtran}
+
+%% ---- Math, algorithms ------------------------------------------------
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+%% ---- Tables & figures ------------------------------------------------
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{stfloats}
+
+%% ---- Misc -----------------------------------------------------------
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{cite}                 % collapses [1,2,3,4] -> [1]-[4]
+\usepackage[hidelinks]{hyperref}
+
+%% ---- TikZ / pgfplots for vector figures -----------------------------
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes,arrows,positioning,calc,fit,backgrounds}
+
+%% ---- Hyphenation -----------------------------------------------------
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+%% ---- Revision-marking macros ----------------------------------------
+%% Use \rev{...} for first-round revisions, \revtwo{...} for second-round.
+%% To produce a clean (non-colored) PDF for the camera-ready, redefine
+%% these macros to no-ops (see below).
+\newcommand{\rev}[1]{\textcolor{blue}{#1}}
+\newcommand{\revtwo}[1]{\textcolor{magenta}{#1}}
+%% Camera-ready: \renewcommand{\rev}[1]{#1}\renewcommand{\revtwo}[1]{#1}
+
+%% ---- Consistent terminology macros ----------------------------------
+\newcommand{\method}{\textsc{YourMethod}}     % placeholder method name
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\etal}{\textit{et~al.}\xspace}
+
+%% ---- Listings for code (Verilog / Python / etc.) --------------------
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.95}
+\lstset{
+  backgroundcolor=\color{backcolour},
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{codegreen},
+  stringstyle=\color{codepurple},
+  numbers=left,
+  numberstyle=\tiny\color{codegray},
+  frame=single,
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=2,
+  xleftmargin=1.5em,
+  framexleftmargin=1em
+}
+
+%% ============================================================
+%% Title, authors, and IEEE markings
+%% ============================================================
+
+\title{Your Paper Title: A Concise Description of the Contribution Following IEEE TCAD Conventions}
+
+\author{First~Author,~\IEEEmembership{Member,~IEEE,}
+        Second~Author,~\IEEEmembership{Senior~Member,~IEEE,}
+        and~Third~Author,~\IEEEmembership{Fellow,~IEEE}%
+\thanks{F.~Author and S.~Author are with the Department of Electrical and Computer Engineering, University~Name, City, State, ZIP, Country (e-mail: first.author@example.edu; second.author@example.edu).}%
+\thanks{T.~Author is with the Department of Computer Science, University~Name, City, State, ZIP, Country (e-mail: third.author@example.edu).}%
+\thanks{Manuscript received April 19, 2026; revised August 26, 2026.}%
+\thanks{Corresponding author: First Author.}%
+}
+
+%% Page header
+\markboth{IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems}%
+{Author \MakeLowercase{\textit{et al.}}: Short Paper Title for Page Header}
+
+%% ============================================================
+\begin{document}
+
+\maketitle
+
+%% ---- Abstract -------------------------------------------------------
+\begin{abstract}
+% Recommended structure (200-250 words):
+%  (1) Problem context (1-2 sentences). What EDA / circuit problem.
+%  (2) Limitation of prior work (1 sentence). Why existing approaches fall short.
+%  (3) Proposed method ("In this paper, we propose...") (1-2 sentences).
+%  (4) Key technical insight or mechanism (1-2 sentences). The "how".
+%  (5) Experimental evidence with concrete numbers.
+%
+% Avoid generic ML-style openers. State the problem concretely.
+
+\textbf{[REPLACE]} \method{} is an open-source / industrial-grade
+[algorithm / framework / methodology] for [specific EDA problem at a
+specific design level]. Existing approaches [briefly: limitation].
+We propose [the key idea in one or two sentences], which [the mechanism].
+Experimental results on the [benchmark suite, with citation] suite, using
+the [PDK / library] and the [tool flow with version], show that the
+proposed method achieves [headline number 1] and [headline number 2]
+compared to the strongest prior baseline [cite].
+\end{abstract}
+
+%% ---- IEEE Keywords --------------------------------------------------
+\begin{IEEEkeywords}
+Computer-aided design, electronic design automation, [3-5 more terms
+specific to your contribution].
+\end{IEEEkeywords}
+
+%% ---- IEEE convention: ----------------------------------------------
+\IEEEpeerreviewmaketitle
+
+%% ============================================================
+%% Sections (each in a separate file under content/)
+%% ============================================================
+
+\input{content/01_intro}
+\input{content/02_background}
+\input{content/03_method}
+\input{content/04_experiments}
+\input{content/05_discussion}
+\input{content/06_conclusion}
+
+%% ============================================================
+%% Acknowledgments (optional; for camera-ready)
+%% ============================================================
+\section*{Acknowledgments}
+The authors would like to thank [funding source(s)] for supporting this
+work, and [collaborators / reviewers] for valuable feedback. % REPLACE
+
+%% ============================================================
+%% Bibliography
+%% ============================================================
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+%% ============================================================
+%% Author biographies (camera-ready only; comment out during review)
+%% ============================================================
+% \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{figs/bio_first.jpg}}]{First Author}
+% (M'18) received the B.S. and Ph.D. degrees in Electrical Engineering from
+% [University], in [Year]. He is currently an [Position] at [Affiliation].
+% His research interests include [topics]. He is a member of the IEEE.
+% \end{IEEEbiography}
+
+% \begin{IEEEbiographynophoto}{Second Author}
+% biography text without a photo
+% \end{IEEEbiographynophoto}
+
+\end{document}

@@ -1,0 +1,307 @@
+%% =====================================================================
+%% Response-to-Reviewers Letter Template
+%% --------------------------------------------------------------------
+%% For use with IEEE TCAD / TVLSI / TODAES / ESL revisions.
+%% This is a standalone document, compiled separately from the revised
+%% manuscript. Submit both via ScholarOne (revised manuscript +
+%% response letter + optional latexdiff PDF).
+%% --------------------------------------------------------------------
+%% Compile with: latexmk -pdf response.tex   or   pdflatex response.tex
+%% =====================================================================
+
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+%% ---- Colors ---------------------------------------------------------
+\definecolor{commentbg}{RGB}{240,240,240}
+\definecolor{commentframe}{RGB}{120,120,120}
+\definecolor{responseaccent}{RGB}{0,90,140}
+\definecolor{revexcerpt}{RGB}{0,0,160}
+
+%% ---- Macros ---------------------------------------------------------
+
+% \reviewercomment{ID}{verbatim quoted comment text}
+% renders the quoted comment in a soft-gray box with the ID as a tag.
+\newtcolorbox{reviewercomment}[1]{%
+    colback=commentbg, colframe=commentframe,
+    boxrule=0.4pt, arc=2pt, left=8pt, right=8pt, top=4pt, bottom=4pt,
+    title={\textbf{#1}}, fonttitle=\small\sffamily,
+    coltitle=black, attach boxed title to top left={xshift=4pt,yshift=-2pt},
+    boxed title style={colback=commentbg, colframe=commentbg,
+                       boxrule=0pt, left=4pt, right=4pt}}
+
+% \response opens the response paragraph
+\newcommand{\response}{\par\textbf{\color{responseaccent}Response:}\par}
+
+% \paperref{Sec, p. X, lines Y-Z}
+\newcommand{\paperref}[1]{\textit{(see #1 of the revised manuscript)}}
+
+% \revexcerpt{...} — quote a piece of revised manuscript text
+\newtcolorbox{revexcerpt}{%
+    colback=white, colframe=revexcerpt,
+    boxrule=0.4pt, arc=1pt, left=10pt, right=10pt,
+    title={Excerpt from the revised manuscript}, fonttitle=\small\sffamily,
+    coltitle=revexcerpt, attach boxed title to top left={xshift=4pt,yshift=-2pt},
+    boxed title style={colback=white, colframe=white, boxrule=0pt}}
+
+\title{\vspace{-1.5em}Response to Reviewers \\
+       \large Manuscript ID TCAD-XXXX-XXXX \\
+       \textit{[REPLACE WITH PAPER TITLE]}}
+\author{}
+\date{\today}
+
+%% =====================================================================
+\begin{document}
+\maketitle
+\vspace{-2em}
+
+%% ---- Opening paragraph ----------------------------------------------
+
+\noindent\textbf{To the Editor and Reviewers of IEEE TCAD:}
+
+We sincerely thank the editor and the [\textbf{N}] reviewers for their
+detailed and constructive comments on our manuscript. The reviews have
+substantially strengthened the paper.
+
+\paragraph{Main changes in this revision.}
+\begin{itemize}[itemsep=2pt,topsep=2pt]
+    \item \textbf{[REPLACE]} Added a new subsection (Sec.~III-D) providing
+          a formal complexity analysis (R1.C2, R3.C1).
+    \item \textbf{[REPLACE]} Added a new experimental subsection (Sec.~V-C)
+          comparing against two additional recent baselines on the EPFL
+          benchmark suite (R2.C1, R2.C4).
+    \item \textbf{[REPLACE]} Substantially revised Sec.~II to better
+          contextualize our contribution within prior work on
+          [topic] (R1.C1, R2.C2).
+    \item \textbf{[REPLACE]} Corrected the algorithmic-complexity
+          discussion in Sec.~III-C (R1.C3).
+    \item \textbf{[REPLACE]} Fixed all typos and notation inconsistencies
+          flagged by Reviewer 3.
+\end{itemize}
+
+\noindent\textbf{Document layout.} Below we respond point-by-point to
+the editor's letter and each reviewer's comments. Reviewer comments are
+reproduced verbatim in shaded boxes; our responses follow in regular
+type. References to the revised manuscript use the section / page / line
+numbers of the revised version, with changes marked in blue text.
+
+\hrule
+
+%% =====================================================================
+\section*{Response to the Editor}
+%% =====================================================================
+
+\begin{reviewercomment}{Editor's Letter}
+\textit{[REPLACE: Quote the editor's specific guidance verbatim, e.g.,
+"Reviewers raised concerns about the experimental coverage. In
+particular, the lack of comparison to recent neural-network-based
+approaches must be addressed in the revision."]}
+\end{reviewercomment}
+
+\response
+We thank the editor for the clear summary of the deciding issues. We
+have addressed each of them as described below; in particular:
+
+\begin{itemize}[itemsep=2pt,topsep=2pt]
+    \item \textbf{[Issue 1]:} Addressed in our response to R1.C2 and
+          R2.C1, and reflected in the new Sec.~V-C
+          \paperref{Sec.~V-C, p.~10, lines 12--38}.
+    \item \textbf{[Issue 2]:} Addressed by the revisions described in
+          our response to R1.C1.
+    \item \textbf{[Issue 3]:} Addressed by the new Theorem~1 and the
+          revised Sec.~III-D.
+\end{itemize}
+
+%% =====================================================================
+\section*{Response to Reviewer 1}
+%% =====================================================================
+
+\paragraph{Summary.} We thank Reviewer~1 for the careful reading and the
+constructive suggestions. \textbf{[REPLACE with a one-sentence summary
+of the most impactful change you made for this reviewer.]}
+
+\subsection*{R1.C1 --- [Short tag for the comment topic]}
+
+\begin{reviewercomment}{Reviewer 1, Comment 1}
+\textit{[REPLACE: Quote the reviewer's comment verbatim.]}
+\end{reviewercomment}
+
+\response We agree with the reviewer. \textbf{[REPLACE]} The previous
+manuscript was unclear on this point. We have:
+
+\begin{itemize}[itemsep=2pt,topsep=2pt]
+    \item Added a new paragraph in Sec.~II-B
+          \paperref{Sec.~II-B, p.~4, lines 8--19} explicitly delineating
+          [the boundary].
+    \item Cited [paper~X] and [paper~Y] as representative of the prior
+          line of work the reviewer alluded to.
+    \item Updated the contribution bullets in Sec.~I to clarify the
+          scope.
+\end{itemize}
+
+\noindent For the reviewer's convenience, the relevant new text reads:
+
+\begin{revexcerpt}
+\textit{[REPLACE: Paste the new text from the revised manuscript
+verbatim, in the same color used to mark revisions, e.g., blue.]}
+\end{revexcerpt}
+
+We hope this resolves the reviewer's concern.
+
+\subsection*{R1.C2 --- [Short tag]}
+
+\begin{reviewercomment}{Reviewer 1, Comment 2}
+\textit{[REPLACE: Quote the reviewer's comment.]}
+\end{reviewercomment}
+
+\response We thank the reviewer for this important suggestion.
+\textbf{[REPLACE]} In response, we have added a new subsection
+(Sec.~III-D) providing a formal complexity analysis. Specifically:
+
+\begin{itemize}[itemsep=2pt,topsep=2pt]
+    \item Theorem~1 \paperref{Sec.~III-D, p.~7} now states the
+          \(O(n \log n)\) complexity of the proposed algorithm.
+    \item The proof is sketched in-line and given in full in
+          Appendix~A \paperref{p.~16}.
+    \item Figure~8 \paperref{Sec.~V-D, p.~12} now reports empirical
+          scaling on designs from 10\,k to 500\,k cells, confirming
+          the analytical result.
+\end{itemize}
+
+\subsection*{R1.C3 --- [Short tag, e.g., correction the reviewer flagged]}
+
+\begin{reviewercomment}{Reviewer 1, Comment 3}
+\textit{[REPLACE: Quote the reviewer's comment.]}
+\end{reviewercomment}
+
+\response The reviewer is correct, and we apologize for the original
+oversight. \textbf{[REPLACE]} We have:
+
+\begin{itemize}[itemsep=2pt,topsep=2pt]
+    \item Corrected the complexity expression in Eq.~(5)
+          \paperref{Sec.~III-C, p.~6, line 14}.
+    \item Updated the discussion in the surrounding paragraph
+          accordingly.
+    \item Added a self-check experiment in Sec.~V-D verifying the
+          corrected expression.
+\end{itemize}
+
+\subsection*{R1.C4, R1.C5, \ldots\ (typos and minor)}
+
+We have addressed each of Reviewer~1's minor comments and typos in the
+revised manuscript:
+
+\begin{itemize}[itemsep=2pt,topsep=2pt]
+    \item \textbf{[REPLACE: brief description of each]} (\paperref{location})
+    \item \ldots
+\end{itemize}
+
+%% =====================================================================
+\section*{Response to Reviewer 2}
+%% =====================================================================
+
+\paragraph{Summary.} We thank Reviewer~2 for the careful evaluation and
+constructive comments.
+
+\subsection*{R2.C1 --- [Short tag]}
+
+\begin{reviewercomment}{Reviewer 2, Comment 1}
+\textit{[REPLACE: Quote the reviewer's comment.]}
+\end{reviewercomment}
+
+\response We agree. \textbf{[REPLACE]} \ldots
+
+\subsection*{R2.C2 --- (Respectful Disagreement Example)}
+
+\begin{reviewercomment}{Reviewer 2, Comment 2}
+\textit{[REPLACE: Quote a comment where you respectfully disagree.]}
+\end{reviewercomment}
+
+\response We thank the reviewer for raising this point. After
+investigation, we believe the comparison the reviewer suggests is not
+appropriate for the current submission, and we explain our reasoning
+below.
+
+\textbf{[REPLACE: Provide the justification, with citations to relevant
+prior work. Be specific about scope, target technology, design level,
+etc.]}
+
+To address the reviewer's underlying concern, we have nonetheless added
+a new paragraph in Sec.~II \paperref{Sec.~II-B, p.~4, lines 22--34}
+that clarifies the boundary between [our scope] and [the scope suggested
+by the reviewer], explicitly citing [paper~X] as representative of the
+latter.
+
+We hope this clarification resolves the concern. We are happy to add a
+direct empirical comparison in a future extension if [the prerequisite]
+becomes feasible.
+
+%% =====================================================================
+\section*{Response to Reviewer 3}
+%% =====================================================================
+
+\paragraph{Summary.} \textbf{[REPLACE with summary of changes for R3.]}
+
+\subsection*{R3.C1 --- [Short tag]}
+
+\begin{reviewercomment}{Reviewer 3, Comment 1}
+\textit{[REPLACE: Quote.]}
+\end{reviewercomment}
+
+\response \textbf{[REPLACE.]}
+
+\hrule
+
+%% =====================================================================
+\section*{Summary of Changes}
+%% =====================================================================
+
+For the reviewers' convenience, the major changes in this revision are
+listed in one place below:
+
+\begin{enumerate}[label=\textbf{Change \arabic*.}, leftmargin=*, itemsep=4pt]
+    \item \textbf{[REPLACE]} New Sec.~III-D: formal complexity analysis
+          (R1.C2, R3.C1). \emph{p.~7, lines 1--22.}
+    \item \textbf{[REPLACE]} New Sec.~V-C: comparison to recent
+          neural-network-based baselines on EPFL (R2.C1, R2.C4).
+          \emph{p.~10, lines 12--38.}
+    \item \textbf{[REPLACE]} Revised Sec.~II: clearer scope distinction
+          and additional related work (R1.C1, R2.C2). \emph{pp.~3--5.}
+    \item \textbf{[REPLACE]} Corrected complexity expression in
+          Eq.~(5), with self-check experiment (R1.C3). \emph{p.~6,
+          line 14, and Sec.~V-D.}
+    \item \textbf{[REPLACE]} Typo fixes and notation cleanup throughout.
+\end{enumerate}
+
+\paragraph{New citations introduced in this revision.} All new citations
+have been programmatically verified through IEEE Xplore, DBLP, and
+CrossRef (see Sec.~Verification at the end of this document for
+details). The new entries are: [paper X], [paper Y], [paper Z].
+
+\paragraph{Diff PDF.} We have also submitted a \texttt{latexdiff}-generated
+diff PDF (\texttt{main-diff.pdf}) as supplementary material to make the
+changes easier to inspect.
+
+\vspace{1em}
+
+\noindent
+We thank the editor and the reviewers again for the careful and
+constructive review. We believe the revisions have substantially
+strengthened the paper, and we look forward to your feedback.
+
+\vspace{2em}
+
+\noindent
+Sincerely,\\
+The Authors
+
+\end{document}

@@ -1,0 +1,59 @@
+\section{Introduction}
+\label{sec:intro}
+
+% Recommended structure (1.5--2 columns of IEEEtran):
+%   Paragraph 1: Problem context (industry / scaling / technology trend)
+%   Paragraph 2: Why prior approaches fall short
+%   Paragraph 3: This work in one paragraph, leading into contribution bullets
+%   Bulleted contribution list (3--5 bullets)
+%   Paragraph 4: Paper roadmap
+
+\IEEEPARstart{T}{he} continuing scaling of integrated circuits and the
+increasing complexity of modern System-on-Chip (SoC) designs make
+[the specific EDA problem you address] a central challenge for
+chip-design productivity and quality of results (\QoR). \textbf{[REPLACE
+with one to two sentences of industry / EDA flow context, with a concrete
+example.]}
+
+Prior work on this problem can be broadly grouped into [N] families.
+\rev{One family of methods \cite{PLACEHOLDER_family1_a, PLACEHOLDER_family1_b}
+relies on [approach], which achieves [property] but suffers from
+[limitation].} A second family \cite{PLACEHOLDER_family2_a, PLACEHOLDER_family2_b}
+adopts [different approach], achieving [property] but at the cost of
+[other limitation]. To our knowledge, no existing method achieves all
+three of \textit{[property A]}, \textit{[property B]}, and \textit{[property C]}
+simultaneously.
+
+In this paper, we propose \method{}, a [class of artifact, \eg{} algorithm,
+framework, methodology] for [specific EDA problem]. \method{} combines
+[ingredient 1] with [ingredient 2] in a [novel way / formulation], and is
+designed to achieve [property A], [property B], and [property C]
+simultaneously. We evaluate \method{} on [benchmark suites] using the
+[PDK, tool flow]. Experimental results show that \method{} achieves
+[headline result 1] and [headline result 2] compared to the strongest
+prior baseline \cite{PLACEHOLDER_baseline}.
+
+\textbf{Contributions.} This paper makes the following contributions:
+
+\begin{itemize}
+    \item We identify [a specific limitation of prior work] and characterize
+          it on [N] benchmark designs (Section~\ref{sec:background}).
+    \item We propose \method{}, a [class of method] that addresses this
+          limitation by [the key idea] (Section~\ref{sec:method}).
+    \item We provide [analytical / theoretical] evidence that \method{}
+          [property], with complexity [\(O(n \log n)\) or similar]
+          (Section~\ref{sec:method}).
+    \item We evaluate \method{} on the [benchmark suite] and report
+          [headline result] over [N] baselines, including [B1] and [B2]
+          (Section~\ref{sec:experiments}).
+    \item We release the implementation as open source at
+          \texttt{[URL or anonymous mirror during review]}
+          (Section~\ref{sec:experiments}).
+\end{itemize}
+
+The rest of this paper is organized as follows.
+Section~\ref{sec:background} reviews relevant background and prior work.
+Section~\ref{sec:method} presents \method{} in detail.
+Section~\ref{sec:experiments} describes the experimental setup and
+results. Section~\ref{sec:discussion} discusses limitations and threats
+to validity. Section~\ref{sec:conclusion} concludes.
