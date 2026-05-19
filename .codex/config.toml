@@ -1,0 +1,27 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]
+startup_timeout_sec = 30.0
+
+[mcp_servers.exa]
+url = "https://mcp.exa.ai/mcp"
+# If your Exa MCP endpoint requires bearer-token auth, set EXA_API_KEY locally
+# and uncomment the next line.
+# bearer_token_env_var = "EXA_API_KEY"
+
+[mcp_servers.sequential-thinking]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking@2025.12.18"]
+startup_timeout_sec = 30.0
+
+[mcp_servers.firecrawl]
+command = "npx"
+args = ["-y", "firecrawl-mcp"]
+env_vars = ["FIRECRAWL_API_KEY"]
+startup_timeout_sec = 30
+enabled = true
