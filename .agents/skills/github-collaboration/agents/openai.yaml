@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Collaboration"
+  short_description: "Team-safe GitHub branch and PR workflow"
+  default_prompt: "Use $github-collaboration to coordinate this GitHub task safely: inspect branch and PR state, protect unrelated work, choose the right commit/review/conflict path, and report the next collaboration step."

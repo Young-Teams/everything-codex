@@ -1,0 +1,27 @@
+.DS_Store
+.env
+
+# Local source material used to build profile branches. Keep these out of the
+# configuration repository history.
+/superpowers/
+/RTLCraft/
+/awesome-ai-research-writing/
+
+# Generated LaTeX and document artifacts.
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.pdf
+
+# Local caches.
+.cache/
+node_modules/
+__pycache__/
+*.pyc
