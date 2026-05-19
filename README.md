@@ -19,10 +19,7 @@ AGENTS.md             Shared assistant behavior guidance
 CLAUDE.md             Claude Code entrypoint pointing at shared guidance
 .codex/
   AGENTS.md           Codex project behavior rules
-  config.toml         Codex runtime, MCP, and subagent limits
-  agents/*.toml       Codex custom subagents
-.agents/
-  skills/*/SKILL.md   Repo-scoped general skills
+  config.toml         Codex runtime and MCP settings
 THIRD_PARTY_NOTICES.md
 ```
 
@@ -34,21 +31,6 @@ THIRD_PARTY_NOTICES.md
 | `firecrawl` | yes | Requires `FIRECRAWL_API_KEY`. |
 | `exa` | yes | Configured as `https://mcp.exa.ai/mcp`. |
 | `sequential-thinking` | yes | Optional general reasoning helper. |
-
-## Subagents
-
-Codex custom agents live under `.codex/agents/`.
-
-| Subagent | Purpose |
-| --- | --- |
-| `planner` | Plan complex features and refactors. |
-| `code-architect` | Produce implementation blueprints from existing code patterns. |
-| `code-explorer` | Trace code paths and map dependencies. |
-| `docs-lookup` | Verify library and API behavior through Context7. |
-| `code-reviewer` | Review diffs for correctness, security, regressions, and missing tests. |
-| `python-reviewer` | Review Python code for typing, errors, security, and style. |
-| `code-simplifier` | Simplify recently changed code while preserving behavior. |
-| `harness-optimizer` | Improve local agent harness reliability, cost, and throughput. |
 
 ## Using A Profile
 
